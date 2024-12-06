@@ -32,6 +32,7 @@
     "passport-google-oauth20": "^2.0.0",
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
+    "passport-magic-login": "^1.2.2",
     "passport-twitter": "^1.0.4"
   },
   "devDependencies": {
