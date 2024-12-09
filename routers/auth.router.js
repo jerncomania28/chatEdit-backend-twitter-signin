@@ -40,6 +40,10 @@ router.get(
   ctrl.getTokenAndRedirect,
 );
 
+/** 
+ * Sample Auth Protected Route to 
+ * test Bearer Tokens from client app works
+*/
 router.get("/protected", ctrl.ensureAuthenticated, (req, res) => {
   res.send(req.user);
 });
