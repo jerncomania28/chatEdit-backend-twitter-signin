@@ -5,6 +5,9 @@ const passport = require("passport"),
 const mongoose = require("mongoose"),
   User = mongoose.model("User");
 
+/**
+ * Middleware to protect auth routes
+*/
 exports.ensureAuthenticated = passport.authenticate("jwt", {
   session: false,
 });
@@ -88,6 +91,8 @@ exports.verifyGoogleLogin = async (
 exports.verifyTwitterLogin = async (token, tokenSecret, profile, done) => {
   try {
     const { id, name, email, profile_image_url_https } = profile._json;
+    // Account for twitter accounts without email
+    if (!email) return done(new Error("Twitter account must have an email linked."))
     const user = await User.findOne({ email });
     if (!user) {
       User.create({
